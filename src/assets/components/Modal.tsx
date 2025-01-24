@@ -16,7 +16,10 @@ const Modal = (props:ModalProps) => {
   
   return (
     <div 
-        onClick={() => data.onClose && data.onClose()}
+        onClick={(e) => {
+            if ((e.target as HTMLElement).className !== 'modal') return;
+            data.onClose && data.onClose()
+        }}
         className='modal'
         style={{backgroundColor: data.bg}}
     >
